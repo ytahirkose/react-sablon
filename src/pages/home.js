@@ -1,9 +1,13 @@
 import React from 'react';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import Wheel from "../components/wheel/wheel";
+import NotFound from "./not-found";
 
 const Home = () => (
+<div>
+    burası home
+</div>
 
-        <div className="flex items-center justify-center" style={{minHeight: '100vh'}}>
-        </div>
 );
 
 export default Home;

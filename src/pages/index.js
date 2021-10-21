@@ -1,10 +1,9 @@
-import React  from 'react';
+import React from 'react';
 
-const Index = () => {
-        return (
-            <div>
-            </div>
-        )
-}
+const NotFound = React.lazy(() => import('/NotFound'));
+const Home = React.lazy(() => import('/Home'));
 
-export default Index;
+export {
+    NotFound,
+    Home,
+};
