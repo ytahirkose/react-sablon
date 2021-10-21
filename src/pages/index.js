@@ -1,12 +1,10 @@
 import React  from 'react';
 
-const Index = {
-    render() {
+const Index = () => {
         return (
             <div>
             </div>
-        );
-    }
+        )
 }
 
 export default Index;

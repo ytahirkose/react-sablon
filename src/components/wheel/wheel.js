@@ -1,10 +1,10 @@
 import React  from 'react';
 
-const NotFound = () => {
+const Wheel = () => {
     return (
         <div>
         </div>
     )
 }
 
-export default NotFound;
+export default Wheel;
