@@ -1,9 +1,10 @@
 import React  from 'react';
+import './wheel.scss'
 
 const Wheel = () => {
     return (
-        <div>
-            Çark burada
+        <div className='main'>
+
         </div>
     )
 }

@@ -6,7 +6,7 @@ import React from "react";
 
 function App() {
     return (
-        <div>
+        <div className='App'>
             <Router>
                 <Switch>
                     <Route path='/' exact component={Home}/>
