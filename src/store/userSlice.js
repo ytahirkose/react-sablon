@@ -13,9 +13,11 @@ const userSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        addUser: (state, action) => {
-            const newUser = { id: '', name: action.payload, surname: '', eMail: '', phone: ''};
-            state.push(newUser);
+        setRotate: (state, action) => {
+            state.data = action.payload;
+        },
+        setCont: (state, action) => {
+            state.data = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -35,4 +37,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const {addUser} = userSlice.actions;
+export const {setRotate} = userSlice.actions;

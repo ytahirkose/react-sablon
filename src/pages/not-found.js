@@ -5,6 +5,7 @@ const NotFound = () => {
     return (
         <div>
             <Link to='/wheel' >bulunamadı</Link>
+            <div>{window.sessionStorage.getItem('currentGift')}</div>
         </div>
     )
 }
