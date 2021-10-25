@@ -2,7 +2,19 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 
 const initialState = {
-    data: true,
+    sectors: [
+        {color: "#f82", label: "Sürpriz"},
+        {color: "#0bf", label: "1 GB"},
+        {color: "#fb0", label: "Sürpriz"},
+        {color: "#0fb", label: "2 GB"},
+        {color: "#b0f", label: "100 DK"},
+        {color: "#f0b", label: "3 GB"},
+        {color: "#bf0", label: "200 DK"},
+        {color: "#f0b", label: "300 DK"},
+        {color: "#bf0", label: "5 GB"}
+    ],
+    rotateData: true,
+    condData: true,
     loading: false,
     error: ''
 };
@@ -14,10 +26,13 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setRotate: (state, action) => {
-            state.data = action.payload;
+            state.rotateData = action.payload;
         },
-        setCont: (state, action) => {
-            state.data = action.payload;
+        setCond: (state, action) => {
+            state.contData = action.payload;
+        },
+        setSectors: (state, action) => {
+            state.sectors = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -37,4 +52,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const {setRotate} = userSlice.actions;
+export const {setRotate, setCond, setSectors} = userSlice.actions;
