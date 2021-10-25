@@ -8,7 +8,6 @@ import {setRotate} from "../../store/userSlice";
 const Wheel = () => {
 
     const [width, setWidth] = useState(0);
-    const [spin, setSpin] = useState(true);
     const [cont, setCont] = useState(true);
     const [sectors, setSectors] = useState([
         {color: "#f82", label: "Sürpriz"},
@@ -23,7 +22,6 @@ const Wheel = () => {
     ]);
     const dispatch = useDispatch();
     const state = useSelector(state => state.userSlice)
-    let deneme = false;
 
     const setSize = () => {
         setWidth(window.innerWidth);
@@ -100,11 +98,11 @@ const Wheel = () => {
         sectors.forEach(drawSector);
         rotate(); // Initial rotation
         engine(); // Start engine
-
-        if (!angVel && deneme) angVel = rand(0.25, 0.35);
+        EL_whell.addEventListener("wheel", () => {
+            if (!angVel) angVel = rand(0.25, 0.35);
+        });
 
     }
-
 
 
     const handleSectors = () => {
@@ -113,29 +111,31 @@ const Wheel = () => {
         for (let i = sectors.length - 1; i > -1; i--) {
             newArray.push(sectors[i]);
         }
+
         setSectors(newArray);
     }
 
     const handlePosition = (e) => {
         if (cont) {
-            if (e.deltaY < 0) {
-                dispatch(setRotate(true));
-            } else if (e.deltaY > 0) {
-                dispatch(setRotate(false));
-            } else if (e.deltaX < 0) {
-                dispatch(setRotate(true));
+            if ((e.deltaY < 0) || (e.deltaX < 0)) {
+                dispatch(setRotate(true))
             } else {
-                dispatch(setRotate(false));
+                handleSectors();
+                dispatch(setRotate(false))
             }
+            setCont(false);
         }
-        deneme = true;
-        fonkWheel(true);
     }
 
     useEffect(() => {
         setWidth(window.innerWidth);
-        fonkWheel(true);
+        fonkWheel(state.data);
     });
+
+    useEffect(() => {
+        fonkWheel(state.data);
+        console.log(sectors)
+    }, [state.data]);
 
     return (
         <div className='main'>
