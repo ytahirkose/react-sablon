@@ -26,6 +26,7 @@
     -->
     <title>React App</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/two.js/0.7.8/two.min.js" integrity="sha512-mdGHODDp7TO7EFKoF9PR9GDzeovgcM/aTgf5uohS5AUS+/xF1x20JC1C02tzv1cAD1ze+SuQ3+4TVxallao44g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -40,5 +41,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+      const axios = require('axios');
+
+
+      // Want to use async/await? Add the `async` keyword to your outer function/method.
+      const getUser = async () => {
+        try {
+          const response = await axios.get('/user?ID=12345');
+          console.log(response);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    </script>
   </body>
 </html>
