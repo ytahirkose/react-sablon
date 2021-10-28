@@ -2,16 +2,18 @@ import React, {useEffect, useState} from 'react';
 import './wheel.scss';
 import baseImg from '../../assets/phone.svg';
 import {useDispatch, useSelector} from "react-redux";
-import {setCond, setSectors} from "../../store/userSlice";
+import {setSectors} from "../../store/userSlice";
 
 
-const Wheel = ({cont,setCont}) => {
+const Wheel = ({cont, setCont}) => {
 
     const [width, setWidth] = useState(0);
     const dispatch = useDispatch();
     const state = useSelector(state => state.userSlice)
-    const {sectors, rotateData, condData} = state
-    const setSize = () => { setWidth(window.innerWidth) }
+    const {sectors, rotateData} = state
+    const setSize = () => {
+        setWidth(window.innerWidth)
+    }
 
     useEffect(() => {
         setWidth(window.innerWidth);
@@ -74,13 +76,13 @@ const Wheel = ({cont,setCont}) => {
             requestAnimationFrame(engine)
         }
 
-// INIT
+        // INIT
         sectors.forEach(drawSector);
         rotate(); // Initial rotation
         engine(); // Start engine
 
         EL_whell.addEventListener("wheel", (e) => {
-            if (cont&&!angVel) {
+            if (cont && !angVel) {
                 if ((e.deltaY < 0) || (e.deltaX < 0)) {
                     spinRoute = true;
                 } else if ((e.deltaY > 0) || (e.deltaX > 0)) {
@@ -97,11 +99,9 @@ const Wheel = ({cont,setCont}) => {
         function rotate() {
             const sector = sectors[getIndex()];
             ctx.canvas.style.transform = spinRoute ? `rotate(${ang - PI / 2}rad)` : `rotate(-${ang + PI / 2}rad)`;
-            //EL_spin.textContent = !angVel ? "Çevir" : sector.label;
-            //EL_spin.style.background = sector.color;
             window.sessionStorage.setItem('currentGift', sector.label)
             if (angVel < 0.001 && angVel > 0.00000000000000001) {
-                 window.location.href = 'win';
+                window.location.href = 'win';
             }
         }
     };
@@ -123,7 +123,7 @@ const Wheel = ({cont,setCont}) => {
             <div className='main-wheel' style={{top: width * 95 / 330}}>
                 <div id="wheelOfFortune">
                     <canvas id="wheel" width={width * 6 / 7} height={width * 6 / 7}/>
-                    <div id="spin"></div>
+                    <div id="spin"/>
                 </div>
             </div>
         </div>

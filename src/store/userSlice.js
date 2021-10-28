@@ -33,7 +33,7 @@ const userSlice = createSlice({
         },
         setSectors: (state, action) => {
             state.sectors = action.payload;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getUsers.pending, (state, action) => {
